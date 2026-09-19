@@ -1,31 +1,3 @@
-"""
-DK Sharma Bot — WhatsApp Number Extractor (Production Edition v3)
-Render/VPS compatible. Single-file deployment.
-
-v2 upgrade (audited refactor of v1):
-  • Centralized navigation state machine: every input screen has 🔙 Back and
-    ❌ Cancel; Back never cancels a running extraction job.
-  • Atomic active-job registration: active_jobs[user_id] = job_id with a
-    threading.Event cancellation primitive checked at every stage.
-  • Fast extraction: thread-local requests.Session reuse (keep-alive),
-    ThreadPoolExecutor bounded visit concurrency, no per-visit exit-IP
-    re-check (cached last_observed_ip + configurable verify interval),
-    batched DB writes, short transactions, WAL.
-  • Proxy engine: racing multi-endpoint verification (first success wins),
-    configurable latency classification, weighted pool selection,
-    proxy-vs-target failure distinction, scope-aware bulk retest,
-    configurable live proxy sources (fetch → parse → dedupe → test → pool),
-    background auto-retest with configurable interval/batch.
-  • Channel auto-post: polished result card, real clipboard CopyTextButton
-    chunks (≤256 chars), share button, optional TXT attachment, async with
-    bounded exponential-backoff retries and error classification.
-  • Safety: no hardcoded secrets, friendly error messages, credential-safe
-    logs, startup config validation, rate-limit-safe Telegram wrappers.
-
-Privacy: only fetches URLs the operator is authorized to process. No CAPTCHA
-bypass, no login bypass, no private-account scraping.
-"""
-
 import os
 import re
 import io
