@@ -1,7 +1,3 @@
-DK Sharma Bot v3 — Runtime Dependencies
-
-Install with: pip install -r requirements.txt
-
 Telegram Bot API
 
 pyTelegramBotAPI>=4.14.0
